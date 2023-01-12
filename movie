@@ -1,0 +1,121 @@
+package pojo;
+
+import DAO.DAOMovies;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+public class Movies  implements java.io.Serializable {
+    
+     private String title;
+     private String genre;
+     private String realese;
+     private String language;
+     private String casts;
+     private String director;
+     private String production;
+
+    public Movies() {
+    }
+
+    public Movies(String title, String genre, String realese, String language, String casts, String director, String production) {
+       this.title = title;
+       this.genre = genre;
+       this.realese = realese;
+       this.language = language;
+       this.casts = casts;
+       this.director = director;
+       this.production = production;
+    }
+   
+    public String getTitle() {
+        return this.title;
+    }
+    
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getGenre() {
+        return this.genre;
+    }
+    
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+    public String getRealese() {
+        return this.realese;
+    }
+    
+    public void setRealese(String realese) {
+        this.realese = realese;
+    }
+    public String getLanguage() {
+        return this.language;
+    }
+    
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+    public String getCasts() {
+        return this.casts;
+    }
+    
+    public void setCasts(String casts) {
+        this.casts = casts;
+    }
+    public String getDirector() {
+        return this.director;
+    }
+    
+    public void setDirector(String director) {
+        this.director = director;
+    }
+    public String getProduction() {
+        return this.production;
+    }
+    
+    public void setProduction(String production) {
+        this.production = production;
+    }
+public void add() {
+    DAOMovies mov = new DAOMovies();
+    mov.addMovie(this);
+}
+
+public void delete() {
+    DAOMovies mov = new DAOMovies();
+    mov.deleteMovie(title);
+    genre ="";
+    realese ="";
+    language ="";
+    casts ="";
+    director ="";
+    production ="";
+    
+}
+
+public List<Movies> getallrecords(){
+    DAOMovies mov = new DAOMovies();
+    List<Movies> lmov = mov.retrieveMovies();
+    return lmov;
+}
+
+public void update(){
+    DAOMovies mov = new DAOMovies();
+    mov.updateMovie(this);
+    title ="";
+    genre ="";
+    realese ="";
+    language ="";
+    casts ="";
+    director ="";
+    production ="";
+    
+            
+            
+}
+
+
+}
+
+
